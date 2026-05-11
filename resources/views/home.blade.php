@@ -1,89 +1,59 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+@section('breadcrumb')
+<div>
+    <li class="breadcrumb-item active">ホーム</li>
+</div>
+@endsection
 
-    <style>
-        /* #region 画面全体 */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0px;
-            background-color: #000000;
-        }
-        /* #endregion */
+@section('content')
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>メモ一覧</h2>
+    <a href="{{ route('memos.create') }}" class="btn btn-primary">
+        <i class="bi bi-plus-lg me-1"></i>
+        新規作成
+    </a>
+</div>
 
-        /* ヘッダー領域 */
-        .site-header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        /* #region ヘッダー(左側)領域 */
-        .header-left {
-        }
-        /* リンク : ホームページ */
-        .link-home{
-            color: #fff;
-            text-decoration: none;
-            font-size: 32px;
-            font-weight: bold;
-            border: none;
-        }
+<table class="table table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>タイトル</th>
+            <th>作成日</th>
+            <th>更新日</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
 
-        /* #endregion */
-        
-        /* #region ヘッダー(右側)領域 */
-        .header-right {
-        }
-        /* リンク : ログイン */
-        .link-login {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 8px 16px;
-            background-color: #4a90d9;
-            border: none;
-            border-radius: 4px;
-        }
-        .link-login:hover {
-            background-color: #357abd;
-        }
-        /* #endregion */
-
-        /* #region メインコンテンツ領域 */
-        .main-content {
-            padding: 20px;
-            color: #fff;
-        }
-        /* #endregion */
-    </style>
-</head>
-
-<body>
-    <!-- #region ヘッダー領域 -->
-    <header class="site-header">
-        <div class="header-left">
-            <a href="/" class="link-home">メモアプリ</a>
-        </div>
-        <div class="header-right">
-            <a href="/login" class="link-login">ログイン</a>
-        </div>
-    </header>
-    <!-- #endregion -->
-
-    <!-- #region メインコンテンツ領域 -->
-    <main class="main-content">
-        <h2>ホームページ</h2>
-        <p>ようこそメモアプリへ</p>
-    </main>
-    <!-- #endregion -->
-</body>
-
-</html>
+        @php
+            $memos = [
+                (object)['id' => 1, 'title' => 'テスト', 'created_at' => '2026/01/01', 'updated_at' => '2026/05/11'],
+                (object)['id' => 2, 'title' => '買い物リスト', 'created_at' => '2026/01/02', 'updated_at' => '2026/05/12'],
+                (object)['id' => 3, 'title' => '会議メモ', 'created_at' => '2026/01/03', 'updated_at' => '2026/05/13'],
+            ];
+        @endphp
+        @forelse ($memos as $memo)
+        <tr>
+            <td>{{ $memo->id }}</td>
+            <td>{{ $memo->title }}</td>
+            <td>{{ $memo->created_at }}</td>
+            <td>{{ $memo->updated_at }}</td>
+            <td>
+                <a href="{{ route('memos.edit', $memo->id) }}" class="btn btn-sm btn-outline-primary">
+                    編集
+                </a>
+                <a href="{{ route('memos.delete', $memo->id) }}" class="btn btn-sm btn-outline-danger">
+                    削除
+                </a>
+            </td>
+        </tr>
+        @empty
+        <tr>
+            <td colspan="5" class="text-center text-muted">メモがありません</td>
+        </tr>
+        @endforelse
+    </tbody>
+</table>
+@endsection
