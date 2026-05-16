@@ -12,7 +12,7 @@
 
 | 機能 | 詳細 |
 |------|------|
-| アカウント管理 | [features/accounts.md](features/accounts.md) |
+| ユーザ認証 | [features/user-auth.md](features/user-auth.md) |
 | テキストメモ | [features/text-memo.md](features/text-memo.md) |
 
 
