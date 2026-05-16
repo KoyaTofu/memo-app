@@ -1,39 +1,75 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>メモアプリ</title>
+    <title>@yield('html-title', 'memo-app')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <header class="site-header bg-dark text-white py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a href="{{ route('home') }}" class="text-white text-decoration-none">
-                <h1 class="h3 mb-0">
-                    <i class="bi bi-hexagon-fill me-2" aria-hidden="true"></i>
-                    メモアプリ
-                </h1>
-            </a>
-            <a href="{{ route('login') }}" class="user-login btn btn-primary">
-                <i class="bi bi-box-arrow-in-right me-1" aria-hidden="true"></i>
-                ログイン
-            </a>
-        </div>
-    </header>
-    <nav class="bg-secondary bg-opacity-10 py-2">
-        <div class="container">
-            <ol class="breadcrumb mb-0">
+    <header id="site-header">
+        <nav class="navbar navbar-expand-md bg-body-tertiary shadow-sm px-4">
+            <div class="container-fluid">
+                <a class="navbar-brand px-2" href="{{ route('home') }}">
+                    <i class="bi bi-hexagon-fill d-inline-block align-text-top pe-1" alt="Logo" aria-hidden="true"></i>
+                    memo-app
+                </a>
+
+                {{-- スマホ時用ハンバーガメニュー --}}
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup">
+                                Sign up
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-secondary bg-opacity-10 px-5 mb-0">
                 @yield('breadcrumb')
             </ol>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <main class="container my-4">
+    <main class="container m-0 p-0 mt-4">
         @yield('content')
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @stack('scripts')
 </body>
+
 </html>
+
+{{-- テンプレート
+@extends('layouts.app')
+@section('html-title', '画面名')
+
+@section('breadcrumb')
+<div>
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">ホーム</a></li>
+    <li class="breadcrumb-item active" aria-current="page">画面名</li>
+</div>
+@endsection
+
+@section('content')
+<div>
+    <h1>ページタイトル</h1>
+</div>
+@endsection
+
+@push('scripts')
+@endpush
+--}}
