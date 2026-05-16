@@ -17,7 +17,7 @@ webサービス利用アカウントを管理
 | 画面名 | URL | ルート名 |
 |--------|-----|----------|
 | アカウント登録 | `/auth/signup` | `auth.signup` |
-| ログイン | `/auth/login` | `auth.ogin` |
+| ログイン | `/auth/login` | `auth.login` |
 | パスワードリセット申請 | `/account/forgot-password` | `account.forgot-password` |
 | パスワードリセット再設定 | `/account/reset-password/{token}` | `account.reset-password` |
 
