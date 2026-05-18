@@ -1,16 +1,11 @@
 @extends('layouts.app')
 
 @section('breadcrumb')
-<div>
-    <li class="breadcrumb-item active" aria-current="page">ホーム</li>
-</div>
+<li class="breadcrumb-item active" aria-current="page">ホーム</li>
 @endsection
 
 @section('content')
-<div>
+<div class="contaier">
     <h1>メモアプリ</h1>
 </div>
 @endsection
-
-@push('scripts')
-@endpush

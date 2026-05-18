@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/signup">
+                            <a class="nav-link" href="{{ route('user-auth.register') }}">
                                 Sign up
                             </a>
                         </li>
@@ -43,7 +43,7 @@
         </nav>
     </header>
 
-    <main class="container m-0 p-0 mt-4">
+    <main class="m-0 p-0 mt-4">
         @yield('content')
     </main>
 
@@ -58,10 +58,8 @@
 @section('html-title', '画面名')
 
 @section('breadcrumb')
-<div>
     <li class="breadcrumb-item"><a href="{{ route('home') }}">ホーム</a></li>
     <li class="breadcrumb-item active" aria-current="page">画面名</li>
-</div>
 @endsection
 
 @section('content')
