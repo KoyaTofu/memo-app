@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
+@section('html-title', __('Register Account') .' - '.  __('Memo App')  )
+
 @section('content')
     <div class="container w-50">
         <div class="card ">
             <div class="card-header">
-                ユーザ登録
+                {{ __('Register Account') }}
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('user-auth.register') }}"
@@ -12,7 +14,7 @@
                     @csrf
                     <div id="name-row" class="row justify-content-center mb-3">
                         <label for="name" class="col-md-4 col-form-label text-md-end">
-                            ユーザ名
+                            {{ __('User Name') }}
                         </label>
                         <div class="col-md-6">
                             <input id="name" name="name" type="text" value="{{ old('name') }}"
@@ -28,7 +30,7 @@
                     </div>
                     <div id="email-row" class="row justify-content-center mb-3">
                         <label for="email" class="col-md-4 col-form-label text-md-end">
-                            メールアドレス
+                            {{ __('Email Address') }}
                         </label>
                         <div class="col-md-6">
                             <input id="email" name="email" type="email" value="{{ old('email') }}"
@@ -43,7 +45,7 @@
                     </div>
                     <div id="password-row" class="row justify-content-center mb-3">
                         <label for="password" class="col-md-4 col-form-label text-md-end">
-                            新パスワード
+                            {{ __('Password') }}
                         </label>
                         <div class="col-md-6">
                             <input id="password" name="password" type="password"
@@ -59,7 +61,7 @@
                     </div>
                     <div id="password-confirm-row" class="row justify-content-center mb-3">
                         <label for="password-confirm" class="col-md-4 col-form-label text-md-end">
-                            パスワード確認
+                            {{ __('Password Confirm') }}
                         </label>
                         <div class="col-md-6">
                             <input id="password-confirm" name="password_confirmation" type="password" class="form-control"
@@ -69,7 +71,7 @@
                     <div id="submit-button" class="row justify-content-center mb-0">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary">
-                                登録
+                                {{ __('Register') }}
                             </button>
                         </div>
                     </div>

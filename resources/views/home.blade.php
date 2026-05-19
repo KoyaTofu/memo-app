@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('breadcrumb')
-<li class="breadcrumb-item active" aria-current="page">ホーム</li>
+<li class="breadcrumb-item active" aria-current="page">{{ __('Home')}}</li>
 @endsection
 
 @section('content')
 <div class="contaier">
-    <h1>メモアプリ</h1>
+    <h1>{{ __('Memo App')}}</h1>
 </div>
 @endsection
