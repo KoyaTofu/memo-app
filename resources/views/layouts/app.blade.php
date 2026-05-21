@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto gap-3">
                         <li class="nav-item">
-                            <a class="btn btn-outline-dark" href="{{ route('user-auth.register') }}">
+                            <a class="btn btn-outline-success" href="{{ route('user-auth.register') }}">
                                 <i class="bi bi-person"></i>
                                 {{ __('Register Account') }}
                             </a>
