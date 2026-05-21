@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield( 'html-title', __('Memo App') )</title>
+    <title>@yield('html-title', __('Memo App'))</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -28,18 +28,24 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto gap-3">
-                        <li class="nav-item">
-                            <a class="btn btn-outline-success" href="{{ route('user-auth.register') }}">
-                                <i class="bi bi-person"></i>
-                                {{ __('Register Account') }}
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-outline-primary" href="{{ route('user-auth.login') }}">
-                                <i class="bi bi-box-arrow-in-right"></i>
-                               {{ __('Login') }}
-                            </a>
-                        </li>
+                        @guest
+                            <li id="register-button" class="nav-item">
+                                <a class="btn btn-outline-success" href="{{ route('user-auth.register') }}">
+                                    <i class="bi bi-person"></i>
+                                    {{ __('Register Account') }}
+                                </a>
+                            </li>
+                            <li id="login-button" class="nav-item">
+                                <a class="btn btn-outline-primary" href="{{ route('user-auth.login') }}">
+                                    <i class="bi bi-box-arrow-in-right"></i>
+                                    {{ __('Login') }}
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                {{ Auth::user()->name }}
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </div>
@@ -63,7 +69,7 @@
 
 {{-- テンプレート
 @extends('layouts.app')
-@section('html-title', __('Register Account') .' - '.  __('Memo App')  )
+@section('html-title', __('Register Account') .' - '. __('Memo App') )
 
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Home')}}</a></li>
