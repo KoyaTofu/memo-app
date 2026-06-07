@@ -1,0 +1,17 @@
+
+@extends('layouts.app')
+@section('html-title', __('Register Account') .' - '. __('Memo App') )
+
+@section('breadcrumb')
+<li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Home')}}</a></li>
+<li class="breadcrumb-item active" aria-current="page">{{ __('Home')}}</li>
+@endsection
+
+@section('content')
+<div class="d-flex">
+    <h1>ページタイトル</h1>
+</div>
+@endsection
+
+@push('scripts')
+@endpush
